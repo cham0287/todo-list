@@ -1,0 +1,20 @@
+.container {
+  padding: 1rem;
+  background-color: orange;
+  margin: 10rem;
+  height: 20rem;
+}
+
+.title {
+  text-align: center;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.inputBox {
+  text-align: center;
+}
+
+.listBtn {
+  justify-content: end;
+}
