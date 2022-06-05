@@ -2,7 +2,9 @@
   padding: 1rem;
   background-color: orange;
   margin: 10rem;
-  height: 20rem;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.75);
 }
 
 .title {
@@ -15,6 +17,22 @@
   text-align: center;
 }
 
-.listBtn {
-  justify-content: end;
+.todo {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.todoBtn {
+  float: right;
+}
+
+li {
+  list-style: none;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  background-color: aliceblue;
+}
+li:hover {
+  transform: scale(1.02);
+  background-color: yellow;
 }

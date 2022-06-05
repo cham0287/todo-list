@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styles from './main.module.css';
+import { FaTrashAlt } from 'react-icons/fa';
 
 function Main() {
-  const [todos, setTodos] = useState([1, 2, 3, 4]);
+  const [todos, setTodos] = useState(['일어나기', '씻기', '밥먹기']);
   const [addList, setAddList] = useState();
   const onChange = (e) => {
-    setAddList(parseInt(e.target.value));
+    setAddList(e.target.value);
   };
-  const onClick = () => {
+  const onAdd = () => {
     const newArray = [...todos, addList];
     console.log(newArray);
     setTodos(newArray);
@@ -21,22 +22,42 @@ function Main() {
     <div>
       <div className={styles.container}>
         <header className={styles.title}>Todo List</header>
-        <div className={styles.inputBox}>
-          <form onSubmit={onSubmit}>
-            <input type='text' onChange={onChange} value={addList} />
-            <button type='submit' onClick={onClick}>
-              Add
-            </button>
-          </form>
-        </div>
+
         <ul>
-          {todos.map((a) => (
+          <div className={styles.inputBox}>
+            <form onSubmit={onSubmit}>
+              <input
+                type='text'
+                onChange={onChange}
+                value={addList}
+                style={{ width: '90%' }}
+                placeholder='할일을 입력하세요'
+              />
+              <button type='submit' onClick={onAdd} style={{ width: '10%' }}>
+                <i class='fa-solid fa-plus'></i>
+              </button>
+            </form>
+          </div>
+          {todos.map((a, index) => (
             <li key={a}>
-              {a}
-              <span className={styles.listBtn}>
-                <button>Edit</button>
-                <button>Remove</button>
-              </span>
+              <div className={styles.todo}>
+                {a}
+                <span className={styles.listBtn}>
+                  <button
+                    className={styles.todoBtn}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const newArray = [...todos];
+                      newArray.splice(index, 1);
+                      setTodos(newArray);
+                      console.log(index);
+                    }}
+                    index={index}
+                  >
+                    <FaTrashAlt />
+                  </button>
+                </span>
+              </div>
             </li>
           ))}
         </ul>
